@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <Header />
       <HeroSection />
-
       <ContentSection id="problem" title="The Problem">
         {" "}
         <ul>
