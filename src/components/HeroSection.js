@@ -1,14 +1,23 @@
 import React from "react";
-import InteractiveNetwork from "./InteractiveNetwork";
+import ParticleBackground from "./ParticleBackground";
 import "./HeroSection.css";
 
 function HeroSection() {
   return (
     <section className="hero-section">
-      <InteractiveNetwork />
+      <ParticleBackground />
       <div className="hero-content">
-        <h1>Welcome to Boardwalk Insurance</h1>
-        <p>"Redefining Commercial Insurance with Innovation and Technology."</p>
+        <h1>Empowering Visionary Entrepreneurs</h1>
+        <p>
+          Expertly managing your accounting and financial needs with precision
+          and reliability.
+        </p>
+        <button
+          className="cta-button"
+          onClick={() => console.log("Learn More clicked")}
+        >
+          Learn More About Us
+        </button>
       </div>
     </section>
   );
