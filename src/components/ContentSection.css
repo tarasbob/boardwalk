@@ -6,12 +6,18 @@
 
 .section-container {
   position: relative;
-  z-index: 1; /* Bring content above the background */
+  z-index: 1;
   max-width: 800px;
   margin: 0 auto;
-  padding: 60px 20px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
   border-radius: 8px;
+  border: 2px solid rgba(0, 51, 102, 0.2); /* Add this line */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.section-container:hover {
+  border-color: rgba(0, 51, 102, 0.2); /* Outline appears on hover */
 }
 
 .section-title {

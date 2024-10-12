@@ -20,7 +20,7 @@ const SVGPatternBackground = () => {
             <polygon
               points="40,0 80,20 80,60 40,80 0,60 0,20"
               fill="none"
-              stroke="#0077be"
+              stroke="#4d88b8"
               strokeWidth="1"
             />
           </pattern>
@@ -42,7 +42,7 @@ const SVGPatternBackground = () => {
             <polygon
               points="30,0 60,15 60,45 30,60 0,45 0,15"
               fill="none"
-              stroke="#003366"
+              stroke="#66b3ff"
               strokeWidth="1"
             />
           </pattern>
