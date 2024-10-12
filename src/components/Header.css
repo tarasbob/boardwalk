@@ -1,19 +1,31 @@
 .header {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   background-color: rgba(0, 51, 102, 0.9);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 50px;
+  padding: 15px 5%;
   z-index: 1000;
+  box-sizing: border-box;
 }
 
 .logo {
   color: #fff;
   font-size: 24px;
   font-weight: bold;
+  flex-shrink: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  max-width: 70%;
+  overflow-x: auto;
 }
 
 .nav a {
@@ -21,8 +33,33 @@
   margin-left: 20px;
   text-decoration: none;
   font-size: 18px;
+  white-space: nowrap;
+}
+
+.nav a:first-child {
+  margin-left: 0;
 }
 
 .nav a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 15px 5%;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .nav {
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .nav a {
+    margin: 0 10px;
+  }
 }
