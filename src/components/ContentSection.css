@@ -1,0 +1,21 @@
+.content-section {
+  padding: 100px 20px;
+  background-color: #fff;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 36px;
+  color: #003366;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-content {
+  font-size: 18px;
+  line-height: 1.6;
+}
