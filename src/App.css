@@ -27,3 +27,9 @@ html,
   padding: 60px 20px;
   text-align: center;
 }
+
+.content-wrapper {
+  position: relative;
+  width: 100%;
+  /* No height specified, so it will expand to fit content */
+}

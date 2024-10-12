@@ -12,6 +12,7 @@ const ContentSection = ({ id, title, children }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
+      {/* Content Container */}
       <div className="section-container">
         <h2 className="section-title">{title}</h2>
         <div className="section-content">{children}</div>

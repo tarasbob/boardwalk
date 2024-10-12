@@ -1,0 +1,26 @@
+.svg-pattern-background {
+  position: fixed; /* Keep background fixed relative to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none; /* Allow interactions to pass through */
+}
+
+.pattern-layer {
+  position: absolute;
+  width: 200%; /* Increase to cover movement during parallax */
+  height: 2000%;
+  top: -1000%; /* Adjust to center the pattern */
+  left: -50%;
+}
+
+.layer1 {
+  opacity: 0.4;
+}
+
+.layer2 {
+  opacity: 0.6;
+}
