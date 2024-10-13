@@ -11,6 +11,7 @@ function Header() {
         <a href="#solution">Solution</a>
         <a href="#market">Market</a>
         <a href="#contact">Contact</a>
+        <a href="#contact">Test</a>
       </nav>
     </header>
   );
