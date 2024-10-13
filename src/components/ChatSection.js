@@ -6,27 +6,29 @@ import "./ChatSection.css";
 function ChatSection() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchInitialMessage();
+    initializeChat();
   }, []);
 
-  const fetchInitialMessage = async () => {
+  const initializeChat = async () => {
     try {
       const response = await axios.post("/.netlify/functions/chat", {
-        messages: [],
+        messages: [{ role: "user", content: "INIT" }],
       });
       const botReply = response.data.message;
       setMessages([{ role: "assistant", text: botReply }]);
     } catch (error) {
-      console.error("Error fetching initial message:", error);
+      console.error("Error initializing chat:", error);
       setMessages([
         {
           role: "assistant",
-          text: "Hello! I'm here to answer any questions you have about our business.",
+          text: "Hello! I'm here to assist you with any questions about our company. How can I help you today?",
         },
       ]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -58,7 +60,7 @@ function ChatSection() {
         ...prevMessages,
         {
           role: "assistant",
-          text: "Sorry, something went wrong. Please try again later.",
+          text: "I apologize, but I'm having trouble processing your request. Could you please try again?",
         },
       ]);
     } finally {
@@ -93,9 +95,12 @@ function ChatSection() {
             placeholder="Type your question..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            onKeyDown={(e) => e.key === "Enter" && !isLoading && handleSend()}
+            disabled={isLoading}
           />
-          <button onClick={handleSend}>Send</button>
+          <button onClick={handleSend} disabled={isLoading}>
+            Send
+          </button>
         </div>
       </div>
     </section>
