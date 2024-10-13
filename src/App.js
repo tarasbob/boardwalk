@@ -355,7 +355,7 @@ function App() {
           {" "}
           <p>
             {" "}
-            We are seeking an investment of <strong>$5 million</strong> to
+            We are seeking an investment of <strong>$4 million</strong> to
             accelerate our growth and solidify our market leadership. The equity
             offered is negotiable based on the strategic partnership. Your
             investment will help us revolutionize the insurance industry and

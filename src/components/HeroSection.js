@@ -14,7 +14,7 @@ function HeroSection() {
             <div className="metric-label">GWP Growth in 2 Years</div>
           </div>
           <div className="metric">
-            <div className="metric-value">$5M</div>
+            <div className="metric-value">$4M</div>
             <div className="metric-label">GWP in 2023</div>
           </div>
           <div className="metric">
