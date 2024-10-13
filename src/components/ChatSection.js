@@ -8,77 +8,56 @@ function ChatSection() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Fetch initial AI message on mount
   useEffect(() => {
-    const fetchInitialMessage = async () => {
-      const conversation = [
-        {
-          role: "system",
-          content:
-            "You are an AI assistant representing our company. Start the conversation by introducing the company and explaining why it's a great investment opportunity. Ask the user if they have any questions or concerns.",
-        },
-      ];
-
-      try {
-        const response = await axios.post("/.netlify/functions/chat", {
-          messages: conversation,
-        });
-        const botReply = response.data.message; // Changed from response.data.reply
-
-        setMessages([
-          {
-            sender: "bot",
-            text: botReply,
-          },
-        ]);
-      } catch (error) {
-        console.error("Error fetching initial message:", error);
-        setMessages([
-          {
-            sender: "bot",
-            text: "Hello! I'm here to answer any questions you have about our business.",
-          },
-        ]);
-      }
-    };
-
     fetchInitialMessage();
   }, []);
+
+  const fetchInitialMessage = async () => {
+    try {
+      const response = await axios.post("/.netlify/functions/chat", {
+        messages: [],
+      });
+      const botReply = response.data.message;
+      setMessages([{ role: "assistant", text: botReply }]);
+    } catch (error) {
+      console.error("Error fetching initial message:", error);
+      setMessages([
+        {
+          role: "assistant",
+          text: "Hello! I'm here to answer any questions you have about our business.",
+        },
+      ]);
+    }
+  };
 
   const handleSend = async () => {
     if (input.trim() === "") return;
 
-    const newMessage = { sender: "user", text: input };
-    const updatedMessages = [...messages, newMessage];
-    setMessages(updatedMessages);
+    const newMessage = { role: "user", text: input };
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
     setInput("");
     setIsLoading(true);
 
-    // Prepare the conversation history for the API
-    const conversation = updatedMessages.map((msg) => ({
-      role: msg.sender === "user" ? "user" : "assistant",
+    const conversation = [...messages, newMessage].map((msg) => ({
+      role: msg.role,
       content: msg.text,
     }));
-
-    conversation.unshift({
-      role: "system",
-      content:
-        "You are an AI assistant representing our company. Provide clear and helpful answers to investor inquiries.",
-    });
 
     try {
       const response = await axios.post("/.netlify/functions/chat", {
         messages: conversation,
       });
-      const botReply = response.data.message; // Changed from response.data.reply
-
-      setMessages((msgs) => [...msgs, { sender: "bot", text: botReply }]);
+      const botReply = response.data.message;
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { role: "assistant", text: botReply },
+      ]);
     } catch (error) {
       console.error("Error sending message:", error);
-      setMessages((msgs) => [
-        ...msgs,
+      setMessages((prevMessages) => [
+        ...prevMessages,
         {
-          sender: "bot",
+          role: "assistant",
           text: "Sorry, something went wrong. Please try again later.",
         },
       ]);
@@ -93,12 +72,12 @@ function ChatSection() {
       <div className="chat-content">
         <div className="chat-window">
           {messages.map((msg, idx) => (
-            <div key={idx} className={`chat-message ${msg.sender}`}>
+            <div key={idx} className={`chat-message ${msg.role}`}>
               <p>{msg.text}</p>
             </div>
           ))}
           {isLoading && (
-            <div className="chat-message bot">
+            <div className="chat-message assistant">
               <p>
                 Typing
                 <span className="dot-one">.</span>

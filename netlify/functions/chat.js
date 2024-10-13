@@ -25,11 +25,13 @@ exports.handler = async function (event, context) {
     console.log("Thread created:", thread.id);
 
     for (const message of messages) {
-      console.log(`Adding message to thread: ${JSON.stringify(message)}`);
-      await openai.beta.threads.messages.create(thread.id, {
-        role: message.role,
-        content: message.content,
-      });
+      if (message.role === "user" || message.role === "assistant") {
+        console.log(`Adding message to thread: ${JSON.stringify(message)}`);
+        await openai.beta.threads.messages.create(thread.id, {
+          role: message.role,
+          content: message.content,
+        });
+      }
     }
 
     console.log("Running assistant");
