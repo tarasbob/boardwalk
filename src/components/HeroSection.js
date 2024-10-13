@@ -26,12 +26,6 @@ function HeroSection() {
           Boardwalk Insurance: Where cutting-edge technology meets insurance
           expertise
         </p>
-        <button
-          className="cta-button"
-          onClick={() => console.log("Learn More clicked")}
-        >
-          Explore Our Innovation
-        </button>
       </div>
     </section>
   );
