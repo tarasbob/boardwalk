@@ -15,10 +15,14 @@ function ChatSection() {
       try {
         const conversation = isInit
           ? [{ role: "user", content: "INIT" }]
-          : [...messages, { role: "user", content }].map((msg) => ({
+          : messages.map((msg) => ({
               role: msg.role,
-              content: msg.text || msg.content,
+              content: msg.text,
             }));
+
+        if (!isInit) {
+          conversation.push({ role: "user", content });
+        }
 
         const response = await axios.post("/.netlify/functions/chat", {
           messages: conversation,
@@ -46,8 +50,11 @@ function ChatSection() {
   );
 
   useEffect(() => {
-    sendMessage(null, true);
-  }, []);
+    const initChat = async () => {
+      await sendMessage(null, true);
+    };
+    initChat();
+  }, [sendMessage]);
 
   useEffect(() => {
     if (chatWindowRef.current) {
@@ -60,7 +67,6 @@ function ChatSection() {
 
     const userInput = input;
     setInput("");
-    setMessages((prev) => [...prev, { role: "user", text: userInput }]);
     await sendMessage(userInput);
   };
 
