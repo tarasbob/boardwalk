@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
 import ChatParticleBackground from "./ChatParticleBackground";
 import "./ChatSection.css";
@@ -7,6 +7,7 @@ function ChatSection() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const chatWindowRef = useRef(null);
 
   const sendMessage = useCallback(
     async (content, isInit = false) => {
@@ -46,20 +47,28 @@ function ChatSection() {
 
   useEffect(() => {
     sendMessage(null, true);
-  }, [sendMessage]);
+  }, []);
+
+  useEffect(() => {
+    if (chatWindowRef.current) {
+      chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   const handleSend = async () => {
     if (input.trim() === "" || isLoading) return;
 
+    const userInput = input;
     setInput("");
-    await sendMessage(input);
+    setMessages((prev) => [...prev, { role: "user", text: userInput }]);
+    await sendMessage(userInput);
   };
 
   return (
     <section className="chat-section">
       <ChatParticleBackground />
       <div className="chat-content">
-        <div className="chat-window">
+        <div className="chat-window" ref={chatWindowRef}>
           {messages.map((msg, idx) => (
             <div key={idx} className={`chat-message ${msg.role}`}>
               <div className="chat-bubble">
