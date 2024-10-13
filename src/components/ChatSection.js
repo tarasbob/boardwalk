@@ -13,15 +13,28 @@ function ChatSection() {
     async (content, isInit = false) => {
       setIsLoading(true);
       try {
-        const conversation = isInit
-          ? [{ role: "user", content: "INIT" }]
-          : messages.map((msg) => ({
+        let conversation;
+
+        if (isInit) {
+          conversation = [{ role: "user", content: "INIT" }];
+        } else {
+          // Add the user's message to the state immediately
+          setMessages((prevMessages) => {
+            const updatedMessages = [
+              ...prevMessages,
+              { role: "user", text: content },
+            ];
+            return updatedMessages;
+          });
+
+          // Build the conversation including the user's message
+          conversation = [
+            ...messages.map((msg) => ({
               role: msg.role,
               content: msg.text,
-            }));
-
-        if (!isInit) {
-          conversation.push({ role: "user", content });
+            })),
+            { role: "user", content },
+          ];
         }
 
         const response = await axios.post("/.netlify/functions/chat", {
@@ -29,9 +42,9 @@ function ChatSection() {
         });
         const botReply = response.data.message;
 
-        setMessages((prev) => [
-          ...prev,
-          ...(isInit ? [] : [{ role: "user", text: content }]),
+        // Add the assistant's reply to the messages
+        setMessages((prevMessages) => [
+          ...prevMessages,
           { role: "assistant", text: botReply },
         ]);
 
@@ -41,7 +54,15 @@ function ChatSection() {
           `Error ${isInit ? "initializing" : "sending message"}:`,
           error
         );
-        return "I apologize, but I'm having trouble processing your request. Could you please try again?";
+        // Add an error message to the chat
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            role: "assistant",
+            text: "I apologize, but I'm having trouble processing your request. Could you please try again?",
+          },
+        ]);
+        return null;
       } finally {
         setIsLoading(false);
       }
@@ -55,7 +76,7 @@ function ChatSection() {
     };
     initChat();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Dependency array adjusted to prevent infinite loop
+  }, []);
 
   useEffect(() => {
     if (chatWindowRef.current) {
@@ -79,7 +100,7 @@ function ChatSection() {
           {messages.map((msg, idx) => (
             <div key={idx} className={`chat-message ${msg.role}`}>
               <div className="chat-bubble">
-                <p>{msg.text}</p>
+                <pre>{msg.text}</pre>
               </div>
             </div>
           ))}
