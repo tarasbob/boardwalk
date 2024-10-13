@@ -23,7 +23,7 @@ function ChatSection() {
         const response = await axios.post("/.netlify/functions/chat", {
           messages: conversation,
         });
-        const botReply = response.data.reply;
+        const botReply = response.data.message; // Changed from response.data.reply
 
         setMessages([
           {
@@ -32,7 +32,7 @@ function ChatSection() {
           },
         ]);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching initial message:", error);
         setMessages([
           {
             sender: "bot",
@@ -55,12 +55,10 @@ function ChatSection() {
     setIsLoading(true);
 
     // Prepare the conversation history for the API
-    const conversation = updatedMessages.map((msg) => {
-      return {
-        role: msg.sender === "user" ? "user" : "assistant",
-        content: msg.text,
-      };
-    });
+    const conversation = updatedMessages.map((msg) => ({
+      role: msg.sender === "user" ? "user" : "assistant",
+      content: msg.text,
+    }));
 
     conversation.unshift({
       role: "system",
@@ -72,11 +70,11 @@ function ChatSection() {
       const response = await axios.post("/.netlify/functions/chat", {
         messages: conversation,
       });
-      const botReply = response.data.reply;
+      const botReply = response.data.message; // Changed from response.data.reply
 
       setMessages((msgs) => [...msgs, { sender: "bot", text: botReply }]);
     } catch (error) {
-      console.error(error);
+      console.error("Error sending message:", error);
       setMessages((msgs) => [
         ...msgs,
         {
@@ -116,7 +114,7 @@ function ChatSection() {
             placeholder="Type your question..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => (e.key === "Enter" ? handleSend() : null)}
+            onKeyDown={(e) => e.key === "Enter" && handleSend()}
           />
           <button onClick={handleSend}>Send</button>
         </div>

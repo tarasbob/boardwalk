@@ -13,18 +13,24 @@ exports.handler = async function (event, context) {
   }
 
   try {
-    const { message } = JSON.parse(event.body);
-    console.log("Received message:", message);
+    const { messages } = JSON.parse(event.body);
+    console.log("Received messages:", JSON.stringify(messages));
+
+    if (!Array.isArray(messages) || messages.length === 0) {
+      throw new Error("Invalid or empty messages array");
+    }
 
     console.log("Creating new thread");
     const thread = await openai.beta.threads.create();
     console.log("Thread created:", thread.id);
 
-    console.log("Adding message to thread");
-    await openai.beta.threads.messages.create(thread.id, {
-      role: "user",
-      content: message,
-    });
+    for (const message of messages) {
+      console.log(`Adding message to thread: ${JSON.stringify(message)}`);
+      await openai.beta.threads.messages.create(thread.id, {
+        role: message.role,
+        content: message.content,
+      });
+    }
 
     console.log("Running assistant");
     const run = await openai.beta.threads.runs.create(thread.id, {
@@ -46,10 +52,10 @@ exports.handler = async function (event, context) {
     }
 
     console.log("Retrieving messages");
-    const messages = await openai.beta.threads.messages.list(thread.id);
+    const threadMessages = await openai.beta.threads.messages.list(thread.id);
 
     console.log("Filtering assistant messages");
-    const lastMessageForRun = messages.data
+    const lastMessageForRun = threadMessages.data
       .filter(
         (message) => message.run_id === run.id && message.role === "assistant"
       )
@@ -75,46 +81,11 @@ exports.handler = async function (event, context) {
     }
   } catch (error) {
     console.error("Error:", error);
-    let errorMessage = "An error occurred.";
-    let errorDetails = {};
-
-    if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      errorMessage = `OpenAI API responded with non-2xx status: ${error.response.status}`;
-      errorDetails = {
-        data: error.response.data,
-        headers: error.response.headers,
-      };
-    } else if (error.request) {
-      // The request was made but no response was received
-      errorMessage = "No response received from OpenAI API";
-      errorDetails = {
-        request: error.request,
-      };
-    } else {
-      // Something happened in setting up the request that triggered an Error
-      errorMessage = "Error setting up the request";
-      errorDetails = {
-        message: error.message,
-      };
-    }
-
-    console.error(
-      "Detailed error:",
-      JSON.stringify({
-        message: errorMessage,
-        error: error.message,
-        details: errorDetails,
-      })
-    );
-
     return {
       statusCode: 500,
       body: JSON.stringify({
-        message: errorMessage,
+        message: "An error occurred.",
         error: error.message,
-        details: errorDetails,
       }),
     };
   }
