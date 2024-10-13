@@ -409,10 +409,8 @@ function App() {
             {" "}
             <strong>Contact Us:</strong>
             <br /> Email:{" "}
-            <a href="mailto:info@boardwalkinsurance.com">
-              info@boardwalkinsurance.com
-            </a>
-            <br /> Phone: (123) 456-7890{" "}
+            <a href="mailto:andrew@myboardwalk.ca">andrew@myboardwalk.ca</a>
+            <br /> Phone: 416-477-9771{" "}
           </p>{" "}
         </ContentSection>
 
