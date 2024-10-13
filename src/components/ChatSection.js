@@ -54,7 +54,8 @@ function ChatSection() {
       await sendMessage(null, true);
     };
     initChat();
-  }, [sendMessage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Dependency array adjusted to prevent infinite loop
 
   useEffect(() => {
     if (chatWindowRef.current) {
