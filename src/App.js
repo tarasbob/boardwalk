@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
+import ChatSection from "./components/ChatSection";
 import ContentSection from "./components/ContentSection";
 import SVGPatternBackground from "./components/SVGPatternBackground";
 import Footer from "./components/Footer";
@@ -13,6 +14,7 @@ function App() {
         <SVGPatternBackground />
         <Header />
         <HeroSection />
+        <ChatSection />
 
         <ContentSection id="problem" title="The Problem">
           {" "}

@@ -1,0 +1,9 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "main": "chat.js",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.67.3"
+  }
+}

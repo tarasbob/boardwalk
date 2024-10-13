@@ -1,0 +1,147 @@
+/* src/components/ChatSection.css */
+
+.chat-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+.chat-section canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chat-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-window {
+  width: 60%;
+  max-width: 800px;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.1); /* Increased transparency */
+  border-radius: 15px;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px); /* Increased blur for better readability */
+}
+
+.chat-message {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.chat-message.user {
+  justify-content: flex-end;
+}
+
+.chat-message.bot {
+  justify-content: flex-start;
+}
+
+.chat-message p {
+  max-width: 75%;
+  padding: 12px 18px;
+  border-radius: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.chat-message.user p {
+  background-color: rgba(0, 123, 255, 0.9); /* Slightly transparent */
+  color: #fff;
+  border-bottom-right-radius: 0;
+}
+
+.chat-message.bot p {
+  background-color: rgba(241, 240, 240, 0.9); /* Slightly transparent */
+  color: #333;
+  border-bottom-left-radius: 0;
+}
+
+.chat-input {
+  width: 60%;
+  max-width: 800px;
+  display: flex;
+  margin-top: 20px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid #007bff;
+  border-radius: 30px;
+  margin-right: 10px;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.8); /* Increased transparency */
+  color: #000;
+}
+
+.chat-input input:focus {
+  border-color: #0056b3;
+}
+
+.chat-input button {
+  padding: 0 25px;
+  font-size: 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+}
+
+.chat-input button:hover {
+  background-color: #0056b3;
+}
+
+/* Loading Dots Animation */
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.dot-one {
+  animation: blink 1.4s infinite;
+}
+
+.dot-two {
+  animation: blink 1.4s infinite;
+  animation-delay: 0.2s;
+}
+
+.dot-three {
+  animation: blink 1.4s infinite;
+  animation-delay: 0.4s;
+}
+
+@media (max-width: 768px) {
+  .chat-window,
+  .chat-input {
+    width: 90%;
+  }
+
+  .chat-message p {
+    max-width: 100%;
+  }
+}
