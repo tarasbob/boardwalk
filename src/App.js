@@ -47,7 +47,7 @@ function App() {
         <ChatSection />
 
         <ContentSection id="problem" title="The Problems">
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-center">
             <ProblemCard
               title="Inefficiencies in Traditional Brokerages"
               description="Outdated, disconnected systems lead to operational bottlenecks. Brokers spend excessive time on manual data entry and paperwork."
