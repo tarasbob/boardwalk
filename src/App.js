@@ -1,3 +1,4 @@
+// React and core components
 import React from "react";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
@@ -5,19 +6,38 @@ import ChatSection from "./components/ChatSection";
 import ContentSection from "./components/ContentSection";
 import SVGPatternBackground from "./components/SVGPatternBackground";
 import Footer from "./components/Footer";
+
+// Styles
 import "./App.css";
 import "./components/Card.css";
+
+// Charts and data visualization
 import GWPChart from "./components/GWPChart";
 import ProjectionsPieChart from "./components/ProjectionsPieChart";
+import ProjectionsBarChart from "./components/ProjectionsBarChart";
+
+// Profile and achievement components
 import LeadershipProfile from "./components/LeadershipProfile";
 import andrewImage from "./components/andrew.jpg";
 import michaelImage from "./components/michael.jpg";
 import achievement1 from "./components/acheivement_1.png";
 import achievement2 from "./components/acheivement_2.png";
-import ProjectionsBarChart from "./components/ProjectionsBarChart";
+
+// Custom components
 import FundUseCard from "./components/FundUseCard";
-import { faBrain, faBullhorn, faDatabase, faGlobe, faLaptopCode, faRobot, faSquareCheck, faUsers } from "@fortawesome/free-solid-svg-icons";
 import AdvantageCard from "./components/AdvantageCard";
+
+// Icons
+import {
+  faBrain,
+  faBullhorn,
+  faDatabase,
+  faGlobe,
+  faLaptopCode,
+  faRobot,
+  faSquareCheck,
+  faUsers
+} from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   return (
@@ -28,47 +48,26 @@ function App() {
         <HeroSection />
         <ChatSection />
 
-        <div className="text-center margin-bottom-10px" id="problem">
-          <h1 className="text-white">The Problems</h1>
-          <div className="flex flex-center">
-            <div className="card blur-bg">
-              <div className="card-body">
-                <h5 className="card-title">Inefficiencies in Traditional Brokerages</h5>
-                <p className="card-text"><strong></strong>
-                  Outdated, disconnected systems lead to operational bottlenecks.
-                  Brokers spend excessive time on manual data entry and paperwork.</p>
-              </div>
-            </div>
-
-            <div className="card blur-bg">
-              <div className="card-body">
-                <h5 className="card-title">Manual Processes Slow Client Service</h5>
-                <p className="card-text">Lengthy
-                  turnaround times for quotes and policy issuance frustrate clients.
-                  Lack of real-time updates hampers communication and satisfaction.</p>
-              </div>
-            </div>
-
-            <div className="card blur-bg">
-              <div className="card-body">
-                <h5 className="card-title">Overstaffing to <br />Compensate</h5>
-                <p className="card-text">Larger firms overhire
-                  to mask operational inefficiencies, increasing overhead costs and
-                  reducing profitability.</p>
-              </div>
-            </div>
-
-            <div className="card blur-bg">
-              <div className="card-body">
-                <h5 className="card-title">Challenges for Brokers and Clients</h5>
-                <p className="card-text">Brokers
-                  struggle to manage workloads effectively, limiting growth
-                  potential. Clients receive suboptimal service due to fragmented
-                  systems and delayed responses.</p>
-              </div>
-            </div>
+        <ContentSection id="problem" title="The Problems">
+          <div className="flex flex-wrap justify-center">
+            <ProblemCard
+              title="Inefficiencies in Traditional Brokerages"
+              description="Outdated, disconnected systems lead to operational bottlenecks. Brokers spend excessive time on manual data entry and paperwork."
+            />
+            <ProblemCard
+              title="Manual Processes Slow Client Service"
+              description="Lengthy turnaround times for quotes and policy issuance frustrate clients. Lack of real-time updates hampers communication and satisfaction."
+            />
+            <ProblemCard
+              title="Overstaffing to Compensate"
+              description="Larger firms overhire to mask operational inefficiencies, increasing overhead costs and reducing profitability."
+            />
+            <ProblemCard
+              title="Challenges for Brokers and Clients"
+              description="Brokers struggle to manage workloads effectively, limiting growth potential. Clients receive suboptimal service due to fragmented systems and delayed responses."
+            />
           </div>
-        </div>
+        </ContentSection>
         <ContentSection id="solution" title="The Solution">
           {" "}
           <p>
@@ -112,45 +111,28 @@ function App() {
             </li>{" "}
           </ul>{" "}
         </ContentSection>
-        <div className="text-center margin-top-10px">
-          <h1 className="text-white">Market Opportunity</h1>
+        <ContentSection id="market-opportunity" title="Market Opportunity">
           <div className="flex flex-center">
-            <div className="card blur-bg">
-              <div className="card-body">
-                <h5 className="card-title">Massive Industry</h5>
-                <p className="card-text"><strong></strong>
-                  Global insurance brokerage
-                  market valued at over $500 billion</p>
-              </div>
-            </div>
-
-            <div className="card blur-bg">
-              <div className="card-body">
-                <h5 className="card-title">Digital Transformation Gap</h5>
-                <p className="card-text">Only 10% have adopted
-                  advanced tech solutions, leaving significant room for innovation.</p>
-              </div>
-            </div>
-
-            <div className="card blur-bg">
-              <div className="card-body">
-                <h5 className="card-title">Demand for Efficiency</h5>
-                <p className="card-text">Growing need for
-                  streamlined processes and better client service.</p>
-              </div>
-            </div>
-
-            <div className="card blur-bg">
-              <div className="card-body">
-                <h5 className="card-title">Strategic Positioning</h5>
-                <p className="card-text">Boardwalk is poised to
-                  capture significant market share through technological innovation.</p>
-              </div>
-            </div>
+            <MarketOpportunityCard
+              title="Massive Industry"
+              description="Global insurance brokerage market valued at over $500 billion"
+            />
+            <MarketOpportunityCard
+              title="Digital Transformation Gap"
+              description="Only 10% have adopted advanced tech solutions, leaving significant room for innovation."
+            />
+            <MarketOpportunityCard
+              title="Demand for Efficiency"
+              description="Growing need for streamlined processes and better client service."
+            />
+            <MarketOpportunityCard
+              title="Strategic Positioning"
+              description="Boardwalk is poised to capture significant market share through technological innovation."
+            />
           </div>
-        </div>
+        </ContentSection>
         <ContentSection
-          id="product-overview"
+          id="product"
           title="Product Overview – Harbour's Key Features"
         >
           {" "}
@@ -211,10 +193,10 @@ function App() {
             </li>{" "}
           </ul>{" "}
         </ContentSection>
-        <ContentSection id="team" title="Our Traction">
+        <ContentSection id="traction" title="Our Traction">
           <GWPChart />
         </ContentSection>
-        <ContentSection id="team" title="Achievements">
+        <ContentSection id="achievements" title="Achievements">
           <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
             <LeadershipProfile
               name="2023 Fastest Growing Brokerage"
@@ -369,7 +351,7 @@ function App() {
             transformation.{" "}
           </p>{" "}
         </ContentSection>
-        <ContentSection id="closing" title="Closing">
+        <ContentSection id="contact" title="Closing">
           {" "}
           <p>
             {" "}
@@ -397,5 +379,37 @@ function App() {
     </div>
   );
 }
+
+const ProblemCard = ({ title, description }) => (
+  <div className="card blur-bg" style={{
+    margin: '10px',
+    padding: '20px',
+    borderRadius: '10px',
+    width: '280px',
+    height: '100%'
+  }}>
+    <div className="card-body">
+      <h5 className="card-title" style={{
+        color: '#FFF',
+        fontSize: '1.1em',
+        marginBottom: '10px',
+        minHeight: '40px'
+      }}>{title}</h5>
+      <p className="card-text" style={{
+        color: '#FFF',
+        fontSize: '0.9em'
+      }}>{description}</p>
+    </div>
+  </div>
+);
+
+const MarketOpportunityCard = ({ title, description }) => (
+  <div className="card blur-bg">
+    <div className="card-body">
+      <h5 className="card-title">{title}</h5>
+      <p className="card-text">{description}</p>
+    </div>
+  </div>
+);
 
 export default App;

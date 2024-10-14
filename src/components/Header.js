@@ -9,8 +9,8 @@ function Header() {
       <nav className="nav">
         <a href="#problem">Problem</a>
         <a href="#solution">Solution</a>
-        <a href="#market">Opportunity</a>
-        <a href="#market">Product</a>
+        <a href="#market-opportunity">Opportunity</a>
+        <a href="#product">Product</a>
         <a href="#team">Team</a>
         <a href="#contact">Contact</a>
       </nav>
