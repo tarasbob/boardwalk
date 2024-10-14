@@ -12,7 +12,7 @@ function ChatSection() {
   const chatWindowRef = useRef(null);
 
   const sendMessage = useCallback(
-    async (content, isInit = false) => {
+    async (content, currentConversationId, isInit = false) => {
       setIsLoading(true);
       try {
         let conversation;
@@ -21,20 +21,17 @@ function ChatSection() {
           conversation = [{ role: "user", content: "INIT" }];
         } else {
           // Add the user's message to the state immediately
-          setMessages((prevMessages) => {
-            const updatedMessages = [
-              ...prevMessages,
-              { role: "user", text: content },
-            ];
-            return updatedMessages;
-          });
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            { role: "user", text: content },
+          ]);
 
           // Save user's message to Supabase
-          if (conversationId) {
+          if (currentConversationId) {
             const { error: userError } = await supabase
               .from("messages")
               .insert({
-                conversation_id: conversationId,
+                conversation_id: currentConversationId,
                 sender: "user",
                 content,
               });
@@ -66,11 +63,11 @@ function ChatSection() {
         ]);
 
         // Save assistant's message to Supabase
-        if (conversationId) {
+        if (currentConversationId) {
           const { error: assistantError } = await supabase
             .from("messages")
             .insert({
-              conversation_id: conversationId,
+              conversation_id: currentConversationId,
               sender: "assistant",
               content: botReply,
             });
@@ -99,7 +96,7 @@ function ChatSection() {
         setIsLoading(false);
       }
     },
-    [messages, conversationId]
+    [messages]
   );
 
   useEffect(() => {
@@ -116,12 +113,13 @@ function ChatSection() {
         return;
       }
 
-      setConversationId(data.id);
+      const newConversationId = data.id;
+      setConversationId(newConversationId);
 
       // Clear previous messages
       setMessages([]);
 
-      await sendMessage(null, true);
+      await sendMessage(null, newConversationId, true);
     };
     initChat();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -138,7 +136,7 @@ function ChatSection() {
 
     const userInput = input;
     setInput("");
-    await sendMessage(userInput);
+    await sendMessage(userInput, conversationId);
   };
 
   return (
