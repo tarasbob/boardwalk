@@ -16,7 +16,7 @@ function ChatParticleBackground() {
       options={{
         fullScreen: { enable: false },
         background: {
-          color: { value: "#003f7f" }, // Lighter blue background
+          color: { value: "transparent" }, // Changed to transparent
         },
         fpsLimit: 60,
         particles: {
