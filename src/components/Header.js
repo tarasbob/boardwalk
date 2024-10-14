@@ -1,11 +1,13 @@
-import React from 'react';
-import logo from '../components/default-dark.svg'
-import './Header.css';
+import React from "react";
+import logo from "../components/default-dark.svg";
+import "./Header.css";
 
 function Header() {
   return (
     <header className="header">
-      <div className="logo"><img src={logo} /></div>
+      <div className="logo">
+        <img src={logo} alt="Company Logo" />
+      </div>
       <nav className="nav">
         <a href="#problem">Problem</a>
         <a href="#solution">Solution</a>

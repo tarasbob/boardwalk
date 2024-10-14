@@ -13,7 +13,6 @@ import "./components/Card.css";
 
 // Charts and data visualization
 import GWPChart from "./components/GWPChart";
-import ProjectionsPieChart from "./components/ProjectionsPieChart";
 import ProjectionsBarChart from "./components/ProjectionsBarChart";
 
 // Profile and achievement components
@@ -31,12 +30,11 @@ import AdvantageCard from "./components/AdvantageCard";
 import {
   faBrain,
   faBullhorn,
-  faDatabase,
   faGlobe,
   faLaptopCode,
   faRobot,
   faSquareCheck,
-  faUsers
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
@@ -72,39 +70,41 @@ function App() {
           {" "}
           <p>
             {" "}
-            <strong>Harbour</strong><br /> This is our proprietary, end-to-end client and
-            policy management system that consolidates all brokerage operations
-            into a seamless platform.{" "}
+            <strong>Harbour</strong>
+            <br /> This is our proprietary, end-to-end client and policy
+            management system that consolidates all brokerage operations into a
+            seamless platform.{" "}
           </p>{" "}
           <ul>
             {" "}
             <li>
               {" "}
-              <strong>Market Recommendation</strong><br /> Proprietary algorithms
-              analyze risk and identify optimal carriers, ensuring accuracy and
-              efficiency.{" "}
+              <strong>Market Recommendation</strong>
+              <br /> Proprietary algorithms analyze risk and identify optimal
+              carriers, ensuring accuracy and efficiency.{" "}
             </li>{" "}
             <li>
               {" "}
-              <strong>Policy Hub</strong><br /> Streamlines quoting for multiple
-              locations and policies in a single workflow, reducing redundancy
-              and saving time.{" "}
+              <strong>Policy Hub</strong>
+              <br /> Streamlines quoting for multiple locations and policies in
+              a single workflow, reducing redundancy and saving time.{" "}
             </li>{" "}
             <li>
               {" "}
-              <strong>LightScan AI</strong><br /> Uses machine learning to
-              automatically compare policies and flag coverage discrepancies,
-              increasing broker accuracy.{" "}
+              <strong>LightScan AI</strong>
+              <br /> Uses machine learning to automatically compare policies and
+              flag coverage discrepancies, increasing broker accuracy.{" "}
             </li>{" "}
             <li>
               {" "}
-              <strong>Integrated Ticket System</strong><br /> Centralizes broker
-              workflows and enhances collaboration, keeping brokers and support
-              staff organized.{" "}
+              <strong>Integrated Ticket System</strong>
+              <br /> Centralizes broker workflows and enhances collaboration,
+              keeping brokers and support staff organized.{" "}
             </li>{" "}
             <li>
               {" "}
-              <strong>Future Capability – AI-Powered Assistants</strong><br />
+              <strong>Future Capability – AI-Powered Assistants</strong>
+              <br />
               Automate data gathering, communications, and risk management
               tasks, allowing brokers to oversee AI actions and manage larger
               portfolios.{" "}
@@ -197,7 +197,13 @@ function App() {
           <GWPChart />
         </ContentSection>
         <ContentSection id="achievements" title="Achievements">
-          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
             <LeadershipProfile
               name="2023 Fastest Growing Brokerage"
               title=""
@@ -212,8 +218,17 @@ function App() {
             />
           </div>
         </ContentSection>
-        <ContentSection id="competitive-advantage" title="Our Competitive Advantage">
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <ContentSection
+          id="competitive-advantage"
+          title="Our Competitive Advantage"
+        >
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
             <AdvantageCard
               title="Proprietary Technology"
               description="Harbour is built from the ground up, tailored to our specific needs."
@@ -231,12 +246,14 @@ function App() {
               subItems={[
                 {
                   title: "Commercial Training Program",
-                  description: "Develops high-performing brokers through real-world training."
+                  description:
+                    "Develops high-performing brokers through real-world training.",
                 },
                 {
                   title: "Sales Incentives",
-                  description: "Motivates and retains top talent with structured goals and flexible rewards."
-                }
+                  description:
+                    "Motivates and retains top talent with structured goals and flexible rewards.",
+                },
               ]}
             />
             <AdvantageCard
@@ -269,7 +286,13 @@ function App() {
           </ul>{" "}
         </ContentSection>
         <ContentSection id="team" title="Leadership">
-          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
             <LeadershipProfile
               name="Michael Malfa"
               title="C.E.O. & Co-Founder"
@@ -288,7 +311,13 @@ function App() {
           <ProjectionsBarChart />
         </ContentSection>
         <ContentSection id="use-of-funds" title="Use of Funds">
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
             <FundUseCard
               title="AI Development"
               description="Enhance Harbour's AI capabilities to further automate and streamline operations."
@@ -369,7 +398,12 @@ function App() {
             {" "}
             <strong>Contact Us:</strong>
             <br /> Email:{" "}
-            <a href="mailto:andrew@myboardwalk.ca" style={{ color: 'white', textDecoration: 'none' }}>andrew@myboardwalk.ca</a>
+            <a
+              href="mailto:andrew@myboardwalk.ca"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              andrew@myboardwalk.ca
+            </a>
             <br /> Phone: 416-477-9771{" "}
           </p>{" "}
         </ContentSection>
@@ -381,24 +415,37 @@ function App() {
 }
 
 const ProblemCard = ({ title, description }) => (
-  <div className="card blur-bg" style={{
-    margin: '10px',
-    padding: '20px',
-    borderRadius: '10px',
-    width: '280px',
-    height: '100%'
-  }}>
+  <div
+    className="card blur-bg"
+    style={{
+      margin: "10px",
+      padding: "20px",
+      borderRadius: "10px",
+      width: "280px",
+      height: "100%",
+    }}
+  >
     <div className="card-body">
-      <h5 className="card-title" style={{
-        color: '#FFF',
-        fontSize: '1.1em',
-        marginBottom: '10px',
-        minHeight: '40px'
-      }}>{title}</h5>
-      <p className="card-text" style={{
-        color: '#FFF',
-        fontSize: '0.9em'
-      }}>{description}</p>
+      <h5
+        className="card-title"
+        style={{
+          color: "#FFF",
+          fontSize: "1.1em",
+          marginBottom: "10px",
+          minHeight: "40px",
+        }}
+      >
+        {title}
+      </h5>
+      <p
+        className="card-text"
+        style={{
+          color: "#FFF",
+          fontSize: "0.9em",
+        }}
+      >
+        {description}
+      </p>
     </div>
   </div>
 );
