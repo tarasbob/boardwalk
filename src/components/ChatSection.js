@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
-import supabase from "./supabaseClient";
+import supabase from "../supabaseClient";
 import ChatParticleBackground from "./ChatParticleBackground";
 import "./ChatSection.css";
 
