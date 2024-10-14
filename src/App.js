@@ -451,10 +451,37 @@ const ProblemCard = ({ title, description }) => (
 );
 
 const MarketOpportunityCard = ({ title, description }) => (
-  <div className="card blur-bg">
+  <div
+    className="card blur-bg"
+    style={{
+      margin: "10px",
+      padding: "20px",
+      borderRadius: "10px",
+      width: "280px",
+      height: "100%",
+    }}
+  >
     <div className="card-body">
-      <h5 className="card-title">{title}</h5>
-      <p className="card-text">{description}</p>
+      <h5
+        className="card-title"
+        style={{
+          color: "#FFF",
+          fontSize: "1.1em",
+          marginBottom: "10px",
+          minHeight: "40px",
+        }}
+      >
+        {title}
+      </h5>
+      <p
+        className="card-text"
+        style={{
+          color: "#FFF",
+          fontSize: "0.9em",
+        }}
+      >
+        {description}
+      </p>
     </div>
   </div>
 );
