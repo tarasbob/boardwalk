@@ -6,6 +6,18 @@ import ContentSection from "./components/ContentSection";
 import SVGPatternBackground from "./components/SVGPatternBackground";
 import Footer from "./components/Footer";
 import "./App.css";
+import "./components/Card.css";
+import GWPChart from "./components/GWPChart";
+import ProjectionsPieChart from "./components/ProjectionsPieChart";
+import LeadershipProfile from "./components/LeadershipProfile";
+import andrewImage from "./components/andrew.jpg";
+import michaelImage from "./components/michael.jpg";
+import achievement1 from "./components/acheivement_1.png";
+import achievement2 from "./components/acheivement_2.png";
+import ProjectionsBarChart from "./components/ProjectionsBarChart";
+import FundUseCard from "./components/FundUseCard";
+import { faBrain, faBullhorn, faDatabase, faGlobe, faLaptopCode, faRobot, faSquareCheck, faUsers } from "@fortawesome/free-solid-svg-icons";
+import AdvantageCard from "./components/AdvantageCard";
 
 function App() {
   return (
@@ -16,42 +28,52 @@ function App() {
         <HeroSection />
         <ChatSection />
 
-        <ContentSection id="problem" title="The Problem">
-          {" "}
-          <ul>
-            {" "}
-            <li>
-              {" "}
-              <strong>Inefficiencies in Traditional Brokerages:</strong>{" "}
-              Outdated, disconnected systems lead to operational bottlenecks.
-              Brokers spend excessive time on manual data entry and paperwork.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Manual Processes Slow Client Service:</strong> Lengthy
-              turnaround times for quotes and policy issuance frustrate clients.
-              Lack of real-time updates hampers communication and satisfaction.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Overstaffing to Compensate:</strong> Larger firms overhire
-              to mask operational inefficiencies, increasing overhead costs and
-              reducing profitability.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Challenges for Brokers and Clients:</strong> Brokers
-              struggle to manage workloads effectively, limiting growth
-              potential. Clients receive suboptimal service due to fragmented
-              systems and delayed responses.{" "}
-            </li>{" "}
-          </ul>{" "}
-        </ContentSection>
+        <div className="text-center margin-bottom-10px" id="problem">
+          <h1 className="text-white">The Problems</h1>
+          <div className="flex flex-center">
+            <div className="card blur-bg">
+              <div className="card-body">
+                <h5 className="card-title">Inefficiencies in Traditional Brokerages</h5>
+                <p className="card-text"><strong></strong>
+                  Outdated, disconnected systems lead to operational bottlenecks.
+                  Brokers spend excessive time on manual data entry and paperwork.</p>
+              </div>
+            </div>
+
+            <div className="card blur-bg">
+              <div className="card-body">
+                <h5 className="card-title">Manual Processes Slow Client Service</h5>
+                <p className="card-text">Lengthy
+                  turnaround times for quotes and policy issuance frustrate clients.
+                  Lack of real-time updates hampers communication and satisfaction.</p>
+              </div>
+            </div>
+
+            <div className="card blur-bg">
+              <div className="card-body">
+                <h5 className="card-title">Overstaffing to <br />Compensate</h5>
+                <p className="card-text">Larger firms overhire
+                  to mask operational inefficiencies, increasing overhead costs and
+                  reducing profitability.</p>
+              </div>
+            </div>
+
+            <div className="card blur-bg">
+              <div className="card-body">
+                <h5 className="card-title">Challenges for Brokers and Clients</h5>
+                <p className="card-text">Brokers
+                  struggle to manage workloads effectively, limiting growth
+                  potential. Clients receive suboptimal service due to fragmented
+                  systems and delayed responses.</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <ContentSection id="solution" title="The Solution">
           {" "}
           <p>
             {" "}
-            <strong>Harbour</strong> is our proprietary, end-to-end client and
+            <strong>Harbour</strong><br /> This is our proprietary, end-to-end client and
             policy management system that consolidates all brokerage operations
             into a seamless platform.{" "}
           </p>{" "}
@@ -59,63 +81,74 @@ function App() {
             {" "}
             <li>
               {" "}
-              <strong>Market Recommendation:</strong> Proprietary algorithms
+              <strong>Market Recommendation</strong><br /> Proprietary algorithms
               analyze risk and identify optimal carriers, ensuring accuracy and
               efficiency.{" "}
             </li>{" "}
             <li>
               {" "}
-              <strong>Policy Hub:</strong> Streamlines quoting for multiple
+              <strong>Policy Hub</strong><br /> Streamlines quoting for multiple
               locations and policies in a single workflow, reducing redundancy
               and saving time.{" "}
             </li>{" "}
             <li>
               {" "}
-              <strong>LightScan AI:</strong> Uses machine learning to
+              <strong>LightScan AI</strong><br /> Uses machine learning to
               automatically compare policies and flag coverage discrepancies,
               increasing broker accuracy.{" "}
             </li>{" "}
             <li>
               {" "}
-              <strong>Integrated Ticket System:</strong> Centralizes broker
+              <strong>Integrated Ticket System</strong><br /> Centralizes broker
               workflows and enhances collaboration, keeping brokers and support
               staff organized.{" "}
             </li>{" "}
             <li>
               {" "}
-              <strong>Future Capability – AI-Powered Assistants:</strong>{" "}
+              <strong>Future Capability – AI-Powered Assistants</strong><br />
               Automate data gathering, communications, and risk management
               tasks, allowing brokers to oversee AI actions and manage larger
               portfolios.{" "}
             </li>{" "}
           </ul>{" "}
         </ContentSection>
-        <ContentSection id="market-opportunity" title="Market Opportunity">
-          {" "}
-          <ul>
-            {" "}
-            <li>
-              {" "}
-              <strong>Massive Industry:</strong> Global insurance brokerage
-              market valued at over $500 billion.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Digital Transformation Gap:</strong> Only 10% have adopted
-              advanced tech solutions, leaving significant room for innovation.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Demand for Efficiency:</strong> Growing need for
-              streamlined processes and better client service.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Strategic Positioning:</strong> Boardwalk is poised to
-              capture significant market share through technological innovation.{" "}
-            </li>{" "}
-          </ul>{" "}
-        </ContentSection>
+        <div className="text-center margin-top-10px">
+          <h1 className="text-white">Market Opportunity</h1>
+          <div className="flex flex-center">
+            <div className="card blur-bg">
+              <div className="card-body">
+                <h5 className="card-title">Massive Industry</h5>
+                <p className="card-text"><strong></strong>
+                  Global insurance brokerage
+                  market valued at over $500 billion</p>
+              </div>
+            </div>
+
+            <div className="card blur-bg">
+              <div className="card-body">
+                <h5 className="card-title">Digital Transformation Gap</h5>
+                <p className="card-text">Only 10% have adopted
+                  advanced tech solutions, leaving significant room for innovation.</p>
+              </div>
+            </div>
+
+            <div className="card blur-bg">
+              <div className="card-body">
+                <h5 className="card-title">Demand for Efficiency</h5>
+                <p className="card-text">Growing need for
+                  streamlined processes and better client service.</p>
+              </div>
+            </div>
+
+            <div className="card blur-bg">
+              <div className="card-body">
+                <h5 className="card-title">Strategic Positioning</h5>
+                <p className="card-text">Boardwalk is poised to
+                  capture significant market share through technological innovation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <ContentSection
           id="product-overview"
           title="Product Overview – Harbour's Key Features"
@@ -178,78 +211,58 @@ function App() {
             </li>{" "}
           </ul>{" "}
         </ContentSection>
-        <ContentSection id="traction" title="Our Traction and Achievements">
-          {" "}
-          <ul>
-            {" "}
-            <li>
-              {" "}
-              <strong>Rapid Growth in GWP:</strong>{" "}
-              <ul>
-                {" "}
-                <li>2021: $1.1 million</li> <li>2022: $2.5 million</li>{" "}
-                <li>2023: $5 million</li> <li>2024 (Projected): $7 million</li>{" "}
-              </ul>{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Industry Recognition:</strong>{" "}
-              <ul>
-                {" "}
-                <li>
-                  2023 Fastest Growing Brokerage — Insurance Business Canada
-                </li>{" "}
-                <li>
-                  2023 Digital Innovation Award — Insurance Business Canada
-                </li>{" "}
-              </ul>{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Operational Efficiency:</strong> Achieved a 40% reduction
-              in administrative tasks for brokers.{" "}
-            </li>{" "}
-          </ul>{" "}
+        <ContentSection id="team" title="Our Traction">
+          <GWPChart />
         </ContentSection>
-        <ContentSection
-          id="competitive-advantage"
-          title="Our Competitive Advantage"
-        >
-          {" "}
-          <ul>
-            {" "}
-            <li>
-              {" "}
-              <strong>Proprietary Technology:</strong> Harbour is built from the
-              ground up, tailored to our specific needs.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>AI Integration:</strong> Enhances productivity beyond
-              traditional capabilities, allowing brokers to manage more accounts
-              efficiently.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Investment in People:</strong>{" "}
-              <ul>
-                {" "}
-                <li>
-                  <strong>Commercial Training Program:</strong> Develops
-                  high-performing brokers through real-world training.
-                </li>{" "}
-                <li>
-                  <strong>Sales Incentives:</strong> Motivates and retains top
-                  talent with structured goals and flexible rewards.
-                </li>{" "}
-              </ul>{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Data Ownership:</strong> Full control over data enhances
-              strategic decisions and operational agility.{" "}
-            </li>{" "}
-          </ul>{" "}
+        <ContentSection id="team" title="Achievements">
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <LeadershipProfile
+              name="2023 Fastest Growing Brokerage"
+              title=""
+              imageSrc={achievement1}
+              description=""
+            />
+            <LeadershipProfile
+              name="2023 Digital Innovation Award"
+              title=""
+              imageSrc={achievement2}
+              description=""
+            />
+          </div>
+        </ContentSection>
+        <ContentSection id="competitive-advantage" title="Our Competitive Advantage">
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <AdvantageCard
+              title="Proprietary Technology"
+              description="Harbour is built from the ground up, tailored to our specific needs."
+              icon={faLaptopCode}
+            />
+            <AdvantageCard
+              title="AI Integration"
+              description="Enhances productivity beyond traditional capabilities, allowing brokers to manage more accounts efficiently."
+              icon={faRobot}
+            />
+            <AdvantageCard
+              title="Investment in People"
+              description="We prioritize the growth and success of our team members."
+              icon={faUsers}
+              subItems={[
+                {
+                  title: "Commercial Training Program",
+                  description: "Develops high-performing brokers through real-world training."
+                },
+                {
+                  title: "Sales Incentives",
+                  description: "Motivates and retains top talent with structured goals and flexible rewards."
+                }
+              ]}
+            />
+            <AdvantageCard
+              title="Data Ownership"
+              description="Full control over data enhances strategic decisions and operational agility."
+              icon={faSquareCheck}
+            />
+          </div>
         </ContentSection>
         <ContentSection id="competition" title="The Competition">
           {" "}
@@ -273,85 +286,48 @@ function App() {
             </li>{" "}
           </ul>{" "}
         </ContentSection>
-        <ContentSection id="team" title="Our Team">
-          {" "}
-          <ul>
-            {" "}
-            <li>
-              {" "}
-              <strong>Andrew Nguyen – Co-Founder:</strong> Over a decade in
-              claims adjusting, underwriting, and sales. Expert in identifying
-              and solving industry inefficiencies.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Michael Malfa – Co-Founder:</strong> 15+ years as an
-              award-winning commercial insurance producer. Experienced in
-              scaling sales and leading teams.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Combined Expertise:</strong> Deep industry knowledge and a
-              proven track record of innovation and success.{" "}
-            </li>{" "}
-          </ul>{" "}
+        <ContentSection id="team" title="Leadership">
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <LeadershipProfile
+              name="Michael Malfa"
+              title="C.E.O. & Co-Founder"
+              imageSrc={michaelImage}
+              description="15+ years as an award-winning commercial insurance producer. Experienced in scaling sales and leading teams."
+            />
+            <LeadershipProfile
+              name="Andrew Nguyen"
+              title="C.O.O. & Co-Founder"
+              imageSrc={andrewImage}
+              description="Over a decade in claims adjusting, underwriting, and sales. Expert in identifying and solving industry inefficiencies."
+            />
+          </div>
         </ContentSection>
-        <ContentSection id="financials" title="Financials and Projections">
-          {" "}
-          <ul>
-            {" "}
-            <li>
-              {" "}
-              <strong>Historical Performance:</strong>{" "}
-              <ul>
-                {" "}
-                <li>Consistent doubling of GWP year-over-year.</li>{" "}
-                <li>
-                  Increasing profit margins due to technological efficiencies.
-                </li>{" "}
-              </ul>{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>5-Year Projections:</strong>{" "}
-              <ul>
-                {" "}
-                <li>2025: $12 million GWP</li> <li>2026: $20 million GWP</li>{" "}
-                <li>2027: $30 million GWP</li>{" "}
-              </ul>{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Scaling Strategy:</strong> Aggressive market expansion and
-              continued tech enhancements to drive growth.{" "}
-            </li>{" "}
-          </ul>{" "}
+        <ContentSection id="team" title="3-Year GWP Projections">
+          <ProjectionsBarChart />
         </ContentSection>
         <ContentSection id="use-of-funds" title="Use of Funds">
-          {" "}
-          <ul>
-            {" "}
-            <li>
-              {" "}
-              <strong>AI Development:</strong> Enhance Harbour's AI capabilities
-              to further automate and streamline operations.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Talent Acquisition:</strong> Hire key personnel for
-              technology and sales teams to support growth.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Market Expansion:</strong> Enter new markets and industry
-              verticals to broaden our reach.{" "}
-            </li>{" "}
-            <li>
-              {" "}
-              <strong>Marketing and Sales:</strong> Amplify brand presence and
-              accelerate client acquisition efforts.{" "}
-            </li>{" "}
-          </ul>{" "}
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <FundUseCard
+              title="AI Development"
+              description="Enhance Harbour's AI capabilities to further automate and streamline operations."
+              icon={faBrain}
+            />
+            <FundUseCard
+              title="Talent Acquisition"
+              description="Hire key personnel for technology and sales teams to support growth."
+              icon={faUsers}
+            />
+            <FundUseCard
+              title="Market Expansion"
+              description="Enter new markets and industry verticals to broaden our reach."
+              icon={faGlobe}
+            />
+            <FundUseCard
+              title="Marketing and Sales"
+              description="Amplify brand presence and accelerate client acquisition efforts."
+              icon={faBullhorn}
+            />
+          </div>
         </ContentSection>
         <ContentSection id="the-ask" title="The Ask">
           {" "}
@@ -398,7 +374,7 @@ function App() {
           <p>
             {" "}
             <strong>
-              Boardwalk Insurance: The Future of Insurance Brokerage
+              Boardwalk Insurance: The Future of Insurance Distribution
             </strong>{" "}
           </p>{" "}
           <p>
@@ -411,7 +387,7 @@ function App() {
             {" "}
             <strong>Contact Us:</strong>
             <br /> Email:{" "}
-            <a href="mailto:andrew@myboardwalk.ca">andrew@myboardwalk.ca</a>
+            <a href="mailto:andrew@myboardwalk.ca" style={{ color: 'white', textDecoration: 'none' }}>andrew@myboardwalk.ca</a>
             <br /> Phone: 416-477-9771{" "}
           </p>{" "}
         </ContentSection>

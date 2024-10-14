@@ -7,7 +7,7 @@ const SVGPatternBackground = () => {
   return (
     <div className="svg-pattern-background">
       {/* Layer 1 */}
-      <svg className="pattern-layer layer1" width="100%" height="100%">
+      {/* <svg className="pattern-layer layer1" width="100%" height="100%">
         <defs>
           <pattern
             id="pattern1"
@@ -26,10 +26,10 @@ const SVGPatternBackground = () => {
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#pattern1)" />
-      </svg>
+      </svg> */}
 
       {/* Layer 2 */}
-      <svg className="pattern-layer layer2" width="100%" height="100%">
+      {/* <svg className="pattern-layer layer2" width="100%" height="100%">
         <defs>
           <pattern
             id="pattern2"
@@ -48,7 +48,7 @@ const SVGPatternBackground = () => {
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#pattern2)" />
-      </svg>
+      </svg> */}
     </div>
   );
 };

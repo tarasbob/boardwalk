@@ -1,17 +1,18 @@
 import React from 'react';
+import logo from '../components/default-dark.svg'
 import './Header.css';
 
 function Header() {
   return (
     <header className="header">
-      <div className="logo">Boardwalk Insurance</div>
+      <div className="logo"><img src={logo} /></div>
       <nav className="nav">
-        <a href="#introduction">Introduction</a>
         <a href="#problem">Problem</a>
         <a href="#solution">Solution</a>
-        <a href="#market">Market</a>
+        <a href="#market">Opportunity</a>
+        <a href="#market">Product</a>
+        <a href="#team">Team</a>
         <a href="#contact">Contact</a>
-        <a href="#contact">Test</a>
       </nav>
     </header>
   );

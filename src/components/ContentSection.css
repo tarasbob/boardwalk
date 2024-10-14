@@ -1,19 +1,25 @@
 .content-section {
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  height: auto !important;
 }
 
 .section-container {
   position: relative;
   z-index: 1;
-  max-width: 800px;
+  max-width: 80vw;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.95);
   padding: 40px;
   border-radius: 8px;
   border: 2px solid rgba(0, 51, 102, 0.2); /* Add this line */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.margin-top-10px {
+  margin-top: 100px;
+}
+
+.margin-bottom-10px {
+  margin-bottom: 40px !important;
 }
 
 .section-container:hover {
@@ -22,12 +28,46 @@
 
 .section-title {
   font-size: 32px;
-  color: #003366;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
 .section-content {
   font-size: 18px;
   line-height: 1.8;
-  color: #333;
+  color: #ffffff;
+}
+
+
+ul li {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;  /* Negative margin to counteract item padding */
+}
+
+.flex > * {
+  padding: 10px;  /* Add padding to all immediate children */
+}
+
+@media (max-width: 768px) {  /* Adjust breakpoint as needed */
+  .flex > *:not(:first-child) {
+    margin-top: 20px;  /* Add top margin to wrapped items */
+  }
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.text-white {
+  color: #ffffff;
 }

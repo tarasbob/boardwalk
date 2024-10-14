@@ -7,17 +7,24 @@
   overflow: hidden;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(
+  /* background: linear-gradient(
     rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.2)
-  ); /* Subtle white overlay */
+    rgba(255, 255, 255, 0.2) */
+
+  background-image: url('./banner_main_3.png');
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* Subtle white overlay */
 }
 
 .pattern-layer {
   position: absolute;
-  width: 200%; /* Increase to cover movement during parallax */
+  width: 200%;
+  /* Increase to cover movement during parallax */
   height: 2000%;
-  top: -1000%; /* Adjust to center the pattern */
+  top: -1000%;
+  /* Adjust to center the pattern */
   left: -50%;
 }
 

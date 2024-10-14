@@ -1,13 +1,18 @@
 import React from "react";
 import ParticleBackground from "./ParticleBackground";
 import "./HeroSection.css";
+import TypeAnimationComponent from "./TypeAnimation";
 
 function HeroSection() {
   return (
     <section className="hero-section">
       <ParticleBackground />
       <div className="hero-content">
-        <h1>Revolutionizing Insurance with Proprietary AI Technology</h1>
+        <h1 id="ssforum" class="type2">
+          <span className="banner-title-primary"><TypeAnimationComponent /></span>
+        <br/>
+          Insurance Distribution with Technology
+        </h1>
         <div className="hero-metrics">
           <div className="metric">
             <div className="metric-value">354%</div>

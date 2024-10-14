@@ -18,9 +18,6 @@ function ParticleBackground() {
       loaded={particlesLoaded}
       options={{
         fullScreen: { enable: false },
-        background: {
-          color: { value: "#0a75ad" },
-        },
         fpsLimit: 120,
         particles: {
           number: { value: 80, density: { enable: true, value_area: 800 } },

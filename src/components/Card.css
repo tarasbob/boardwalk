@@ -1,0 +1,30 @@
+.card {
+  width: 18rem;
+  margin-right: 20px;
+  padding: 10px 20px;
+  color: #FFF;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.blur-bg {
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-card {
+  margin-top: 50px;
+  padding-bottom: 50px;
+  width: 95%;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
