@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
+import supabase from "../supabaseClient";
 import ChatParticleBackground from "./ChatParticleBackground";
 import "./ChatSection.css";
 
@@ -7,6 +8,9 @@ function ChatSection() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [conversationId, setConversationId] = useState(() => {
+    return localStorage.getItem("conversationId") || null;
+  });
   const chatWindowRef = useRef(null);
 
   const sendMessage = useCallback(
@@ -26,6 +30,17 @@ function ChatSection() {
             ];
             return updatedMessages;
           });
+
+          // Save user's message to Supabase
+          const { error: userError } = await supabase.from("messages").insert({
+            conversation_id: conversationId,
+            sender: "user",
+            content,
+          });
+
+          if (userError) {
+            console.error("Error saving user message:", userError);
+          }
 
           // Build the conversation including the user's message
           conversation = [
@@ -48,6 +63,19 @@ function ChatSection() {
           { role: "assistant", text: botReply },
         ]);
 
+        // Save assistant's message to Supabase
+        const { error: assistantError } = await supabase
+          .from("messages")
+          .insert({
+            conversation_id: conversationId,
+            sender: "assistant",
+            content: botReply,
+          });
+
+        if (assistantError) {
+          console.error("Error saving assistant message:", assistantError);
+        }
+
         return botReply;
       } catch (error) {
         console.error(
@@ -67,11 +95,45 @@ function ChatSection() {
         setIsLoading(false);
       }
     },
-    [messages]
+    [messages, conversationId]
   );
 
   useEffect(() => {
     const initChat = async () => {
+      if (!conversationId) {
+        // Create a new conversation
+        const { data, error } = await supabase
+          .from("conversations")
+          .insert({})
+          .select("id")
+          .single();
+
+        if (error) {
+          console.error("Error creating conversation:", error);
+          return;
+        }
+
+        setConversationId(data.id);
+        localStorage.setItem("conversationId", data.id);
+      } else {
+        // Fetch previous messages
+        const { data: messagesData, error: fetchError } = await supabase
+          .from("messages")
+          .select("sender, content")
+          .eq("conversation_id", conversationId)
+          .order("created_at", { ascending: true });
+
+        if (fetchError) {
+          console.error("Error fetching messages:", fetchError);
+        } else {
+          const fetchedMessages = messagesData.map((msg) => ({
+            role: msg.sender,
+            text: msg.content,
+          }));
+          setMessages(fetchedMessages);
+        }
+      }
+
       await sendMessage(null, true);
     };
     initChat();
